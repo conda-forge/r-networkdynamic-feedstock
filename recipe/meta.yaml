@@ -1,4 +1,4 @@
-{% set version = '0.10.0' %}
+{% set version = "0.10.1" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/networkDynamic_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/networkDynamic/networkDynamic_{{ version }}.tar.gz
-  sha256: eb31d72c73a06a145d231ad3489d450d63b9fecc069aeb19331d7417241df3b5
+  sha256: 22eed8d9dea8d70877c1619eb2bc3f1ac5142ce3db6fd6eb3e0879ca56b76ca0
 
 build:
   merge_build_host: True  # [win]
-  number: 1
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/

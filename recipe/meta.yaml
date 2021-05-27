@@ -45,7 +45,7 @@ test:
 
 about:
   home: http://statnet.org
-  license: GPL-3
+  license: GPL-3.0-only
   summary: Simple interface routines to facilitate the handling of network objects with complex
     intertemporal data. This is a part of the "statnet" suite of packages for network
     analysis.

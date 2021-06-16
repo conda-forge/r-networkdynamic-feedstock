@@ -1,4 +1,4 @@
-{% set version = "0.10.1" %}
+{% set version = "0.11.0" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/networkDynamic_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/networkDynamic/networkDynamic_{{ version }}.tar.gz
-  sha256: 22eed8d9dea8d70877c1619eb2bc3f1ac5142ce3db6fd6eb3e0879ca56b76ca0
+  sha256: aa21caaddce75c22e08b94adfb6036f5ee151ffb79d174ad250fe4592d27dad2
 
 build:
-  merge_build_host: True  # [win]
-  number: 1
+  merge_build_host: true  # [win]
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
@@ -46,11 +46,9 @@ test:
 about:
   home: http://statnet.org
   license: GPL-3.0-only
-  summary: Simple interface routines to facilitate the handling of network objects with complex
-    intertemporal data. This is a part of the "statnet" suite of packages for network
-    analysis.
+  summary: Simple interface routines to facilitate the handling of network objects with complex intertemporal data. This is a part of the "statnet" suite of packages for network analysis.
   license_family: GPL3
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+  license_file: {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
 
 extra:
   recipe-maintainers:

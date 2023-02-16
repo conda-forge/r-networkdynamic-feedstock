@@ -1,4 +1,4 @@
-{% set version = "0.11.2" %}
+{% set version = "0.11.3" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,32 +10,35 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/networkDynamic_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/networkDynamic/networkDynamic_{{ version }}.tar.gz
-  sha256: beefaf50eb8609528358b75f5814a8f1cdc4d2db8059b99be69919da2bc02beb
+  sha256: 2c664fd0d85c0cdc099480d67a18e6afbb0cc1036963b6664a8a756874648e5b
 
 build:
   merge_build_host: true  # [win]
-  number: 1
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
-    - {{ compiler('c') }}        # [not win]
+    - {{ compiler('c') }}              # [not win]
     - {{ compiler('m2w64_c') }}        # [win]
     - {{ posix }}filesystem        # [win]
     - {{ posix }}make
     - {{ posix }}sed               # [win]
     - {{ posix }}coreutils         # [win]
     - {{ posix }}zip               # [win]
+    - cross-r-base {{ r_base }}    # [build_platform != target_platform]
   host:
     - r-base
-    - r-network >=1.15
+    - r-network >=1.17.0
+    - r-networklite
     - r-statnet.common
   run:
     - r-base
     - {{ native }}gcc-libs         # [win]
-    - r-network >=1.15
+    - r-network >=1.17.0
+    - r-networklite
     - r-statnet.common
 
 test:
@@ -48,7 +51,8 @@ about:
   license: GPL-3.0-only
   summary: Simple interface routines to facilitate the handling of network objects with complex intertemporal data. This is a part of the "statnet" suite of packages for network analysis.
   license_family: GPL3
-  license_file: {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
+  license_file:
+    - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
 
 extra:
   recipe-maintainers:

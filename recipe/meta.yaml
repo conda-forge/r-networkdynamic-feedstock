@@ -1,6 +1,5 @@
 {% set version = "0.11.4" %}
 {% set posix = 'm2-' if win else '' %}
-{% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-networkdynamic
@@ -13,8 +12,7 @@ source:
   sha256: 6bf3e216a444f183ff925e29560fae4c2362cc2a9fed19b3e116a9d9f1184a46
 
 build:
-  merge_build_host: true  # [win]
-  number: 0
+  number: 1
   rpaths:
     - lib/R/lib/
     - lib/
@@ -22,7 +20,9 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}              # [not win]
+    - {{ stdlib("c") }}                # [not win]
     - {{ compiler('m2w64_c') }}        # [win]
+    - {{ stdlib("m2w64_c") }}          # [win]
     - {{ posix }}filesystem        # [win]
     - {{ posix }}make
     - {{ posix }}sed               # [win]
@@ -36,7 +36,6 @@ requirements:
     - r-statnet.common
   run:
     - r-base
-    - {{ native }}gcc-libs         # [win]
     - r-network >=1.17.0
     - r-networklite
     - r-statnet.common

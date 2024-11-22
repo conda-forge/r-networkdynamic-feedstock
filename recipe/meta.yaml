@@ -1,4 +1,4 @@
-{% set version = "0.11.4" %}
+{% set version = "0.11.5" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,10 +9,10 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/networkDynamic_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/networkDynamic/networkDynamic_{{ version }}.tar.gz
-  sha256: 6bf3e216a444f183ff925e29560fae4c2362cc2a9fed19b3e116a9d9f1184a46
+  sha256: a33ff40ca8d7f923915219793eb6b5acfa9a2c888e3dacc031210f414bf2a5c0
 
 build:
-  number: 1
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
